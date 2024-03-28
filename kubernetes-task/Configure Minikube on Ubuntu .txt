@@ -1,0 +1,55 @@
+Configure Minikube on Ubuntu 
+
+1) create Ec2 instance with ubuntu image use t2.medium
+
+2) Update your system & install docker in it
+  # sudo apt update
+#sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+# sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+3)Add your local user to docker group so that your local user
+  # sudo usermod -G docker $USER
+  # newgrp docker
+  # systemctl status docker
+
+4) install minikube 
+   # curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+   # sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+5) check minikube version
+   # minikube version
+
+6) start minikube using command (use when you start or stop the system)
+   # minikube start --driver=docker --force (with root user)
+   # minikube start --driver=docker (without root user)
+
+7) check minikube status
+   # minikube status
+
+8) install kubectl tool.
+   # curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+
+9) set the executable permission on it and move to /usr/local/bin and check kubectl versionb 
+  # chmod +x kubectl
+  # sudo mv kubectl /usr/local/bin
+  # kubectl version -o yaml
+
+10) To interact with your minikube cluster use commands.
+  # kubectl get nodes
+  # kubectl cluster-info
+  
+
+
+   

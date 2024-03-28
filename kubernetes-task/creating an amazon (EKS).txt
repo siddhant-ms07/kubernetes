@@ -1,0 +1,74 @@
+creating an Amazon Elastic kubernetes Service (EKS) cluster.
+
+1) create a iam role (EKS)-cluster--> AmazonEKSClusterPolicy.
+
+2) create an amazon EKS console--> click on "create cluster" and choose the "aws management" method
+   a) kubernetes version--> (1.29)
+   b) cluster service role--> attach (EKS)--> AmazonEKSClusterPolicy.
+   c) cluster access --> (EKS API and ConfigMAp).
+
+3) specify networking.
+   a) select default VPC
+   b) select subnets--> as per your region 
+   c) select security groups.
+   d) choose cluster Ip address family--> (IPv4)
+   e) cluster endpoint access--> (public)
+
+4) confiigure observability
+
+5) select-add-ons
+
+6) Configure selected add-ons settings
+
+7) create a EKS cluster.
+
+-------------------------------------------------------------------------------------
+
+8) set up IAM roles for EC2
+  a) AmazonEKS_CNI_Policy
+  b) AmazonEKSClusterPOilcy
+  c) AmazonEKSSERvivePolicy
+  d) AmazonEKSWorkerNodePolicy
+  e) AmazonEC2ServiveReadOnly
+9)create IAM role.
+
+--------------------------------------------------------------------------------------
+
+10) configure the AWS cloudshell
+    Open aws Cloud shell.
+   $ aws configure
+     aws access key:
+     aws secret key:
+--------------------------------------------------------------------------------------
+
+11) Add worker nodes
+    a) In the AWS  EKS console select your cluster
+    b) In cluster go to compute service
+    c) click on "ADD Node Group"
+    d) select the "Node IAm role"--> (EC2 IAM role)
+
+12) Node group compute configuration
+    a) AMI type (Amazon linux or Ubuntu or MACos, etc)
+    b) capacity type (on-demand)
+    c) Instance type (t2.medium)
+    d) Disk size (20gb or 15gb)
+
+13) Node group sacling Configuration 
+   a) desired size (1)
+   b) minimum size (1)
+   c) maximum sixe (1)
+
+14)Node group update configuration
+  a) number 
+     value (1)
+
+15) Specify networking 
+   select Subnets.
+
+16) create node.
+
+------------------------------------------------------------------------------------
+
+17) open cloud shell and excute the following commands
+   # aws eks --region (your region) update-kubeconfig --name (cluster name)
+   # kubectl cluster-info
