@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod 
 metadata: 
-  name: prodpod
+  name: ms
   namespace: siddhant
   labels:   
     app: ms07
@@ -17,7 +17,7 @@ spec:
 apiVersion: v1 
 kind: Service
 metadata:
-    name: b24service
+    name: vk
     namespace: siddhant
 spec: 
     type: NodePort
