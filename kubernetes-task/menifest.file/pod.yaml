@@ -1,7 +1,7 @@
 apiVersion: v1
 Kind: Pod
 metadata: 
-   name: sidpod
+   name: sid-app
 labels: 
   app: new-app
 spec:
