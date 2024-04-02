@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: ms07
+  labels:
+    app: ms-sid
+spec: 
+    selector: 
+      app: ms-sid 
+    replicas: 4
+    template:   
+      metadata:
+        labels:
+          name: nginxapp
+          app: ms-sid
+      spec:
+        containers:
+          - name: nginxapp
+            image: nginx:latest 
+            ports:
+                - containerPort: 80
+                  protocol: TCP
+
+      
