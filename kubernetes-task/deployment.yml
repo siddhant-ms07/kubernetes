@@ -9,20 +9,20 @@ spec:
       type: RollingUpdate
       rollingUpdate:
             maxSurge: 1
-            maxUnavailable: 1
+            maxUnavailabel: 1
     selector:
      matchLabels:
-         app: core
+       app: core
     replicas: 5
     template:
-      metadata:
-       labels:
-          name: nginxapp
-          app: core2
-      spec:
-        containers:
-          - name: nginxapp
-            image: httpd:latest
-            ports:
-                - containerPort: 80
-                  protocol: TCP 
+        metadata:
+          labels:
+            name: nginxapp
+            app: core2
+        spec:
+            containers:
+              - name: nginxapp
+                image: httpd:latest
+                ports:
+                  - containerPort: 80
+                    protocol: TCP 
