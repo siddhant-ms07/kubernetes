@@ -16,9 +16,9 @@ spec:
     replicas: 5
     template:
       metadata:
-      labels:
-        name: nginxapp
-        app: core2
+       labels:
+          name: nginxapp
+          app: core2
       spec:
         containers:
           - name: nginxapp
