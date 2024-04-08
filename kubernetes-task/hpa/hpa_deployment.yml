@@ -17,7 +17,7 @@ spec:
             app: myapp
         spec:
           containers:
-            - name: frontend
+            - name: frontendapp
               image: anupdhude/frontendrds
               ports:
                 - containerPort: 80
