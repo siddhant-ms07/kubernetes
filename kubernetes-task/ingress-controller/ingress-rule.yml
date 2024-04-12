@@ -1,1 +1,27 @@
-
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-rule
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: sidd.in
+    http:
+      paths:        
+         -  path: /
+            pathType: Prefix
+            backend:
+              service: 
+                name: frontendservice
+                port:
+                  number: 80
+         -  path: /student
+            pathType: Prefix
+            backend:
+              service: 
+                name: backendservice
+                port:
+                  number: 8080
+  
